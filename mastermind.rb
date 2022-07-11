@@ -155,8 +155,17 @@ end
 def play_make_code(board)
   puts "What is your secrete code?"
   failed_to_guess = true
-  hidden_code = gets 
-  hidden_code.chomp!
+  valid_code_received = false
+
+  while (!valid_code_received)
+    hidden_code = gets 
+    hidden_code.chomp!
+    if hidden_code.length != 4 || hidden_code != hidden_code.to_i.to_s
+      puts "invalid input. try again"
+    else 
+      valid_code_received = true
+    end
+  end
   hidden_code_string = hidden_code
   hidden_code = convert_to_array_of_int(hidden_code)
   p hidden_code
